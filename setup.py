@@ -17,10 +17,11 @@ pystrings_module = Extension('pystrings', sources=['pystrings.c'])
 csleep_module = Extension('csleep', sources=['csleep.c'])
 numpy_module = Extension('numpy_extensions', sources=['numpy_extensions.c'], include_dirs=[np.get_include()])
 numpy_extension = Extension("numpy_stuff", ["numpy_stuff.pyx", 'doubler.c'], include_dirs=[np.get_include()])
+gsw_extension = Extension("gsw_stuff", ["gsw_stuff.pyx"], include_dirs=[np.get_include()], libraries=['teos'] )
 setup(name = 'PackageName', 
         vesrion='0.1',
         description='tutorial',
-        ext_modules=[module1, csleep_module, pystrings_module, numpy_module, numpy_extension],
+        ext_modules=[module1, csleep_module, pystrings_module, numpy_module, numpy_extension, gsw_extension],
         setup_requires=['setuptools_cython'],
         )
 
